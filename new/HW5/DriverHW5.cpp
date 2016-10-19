@@ -1,19 +1,21 @@
 //Muntadher AlZayer 104348447
 //Boese - Yang Li
-//HW4
+//HW5
 
 #include<iostream>
 #include<algorithm>
 #include<fstream>
-#include "MovieTree.hpp"
 #include<string>
+#include "MovieTree.hpp"
 using namespace std;
 void showmainmenu(){
 	cout << "======Main Menu======" << endl;
 	cout << "1. Find a movie" << endl;
 	cout << "2. Rent a movie" << endl;
 	cout << "3. Print the inventory" << endl;
-	cout << "4. Quit" << endl;
+	cout << "4. Delete a movie" << endl;
+	cout << "5. Count the inventory" << endl;
+	cout << "6. Quit" << endl;
 }
 
 
@@ -44,7 +46,7 @@ int main(int argc , char* argv[]){
 		bintree->addMovieNode(atoi(thearray[x].c_str()) , thearray[x+1] , atoi(thearray[x+2].c_str()) , atoi(thearray[x+3].c_str()));
 	}//end of building of BST
 	string k;
-	while(k!="4"){
+	while(k!="6"){
 		showmainmenu();
 		cin >> k;
 		if(k == "1"){
@@ -64,5 +66,18 @@ int main(int argc , char* argv[]){
 		else if(k=="3"){
 			bintree->printMovieInventory();
 		}
+		else if(k=="4"){
+			cout << "Enter title:" << endl;
+			string l;
+			getline(cin, l, '\n');
+			getline(cin, l, '\n');
+			bintree->deleteMovieNode(l);
+			
+		}
+		else if(k=="5"){
+			int x = bintree->countMovieNodes();
+			cout << "The tree has " << x << " nodes" << endl;
+		}
 	}
+	delete bintree;
 }

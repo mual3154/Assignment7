@@ -1,5 +1,6 @@
 #ifndef MOVIETREE_H
 #define MOVIETREE_H
+#include<string>
 
 struct MovieNode{
     int ranking;
